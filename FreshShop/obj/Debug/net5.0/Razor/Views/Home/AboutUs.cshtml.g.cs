@@ -12,7 +12,22 @@ namespace AspNetCore
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.Mvc.Rendering;
     using Microsoft.AspNetCore.Mvc.ViewFeatures;
+#nullable restore
+#line 1 "G:\FreshShop\FreshShop\FreshShop\Views\_ViewImports.cshtml"
+using FreshShop;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 2 "G:\FreshShop\FreshShop\FreshShop\Views\_ViewImports.cshtml"
+using FreshShop.Models;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"6fea19193cd60c748cd74d0cfa33cd74de7f1c82", @"/Views/Home/AboutUs.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"56b4e94e6d14acd9ec2c82476f9c946b1e7738b2", @"/Views/_ViewImports.cshtml")]
     public class Views_Home_AboutUs : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     {
         #pragma warning disable 1998

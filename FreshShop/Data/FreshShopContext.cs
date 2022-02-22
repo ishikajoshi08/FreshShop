@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace FreshShop.Data
 {
-    public class FreshShopContext : DbContext
+    public class FreshShopContext : IdentityDbContext
     {
         public FreshShopContext(DbContextOptions<FreshShopContext> options) : base(options)
         {
@@ -14,5 +15,9 @@ namespace FreshShop.Data
         }
 
         public DbSet<Products> Products { get; set; }
+
+        public DbSet<ProductGallery> ProductGallery { get; set; }
+
+        public DbSet<Category> Category { get; set; }
     }
 }

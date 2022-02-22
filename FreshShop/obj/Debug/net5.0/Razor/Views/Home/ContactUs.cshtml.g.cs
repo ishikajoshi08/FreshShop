@@ -12,9 +12,47 @@ namespace AspNetCore
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.Mvc.Rendering;
     using Microsoft.AspNetCore.Mvc.ViewFeatures;
+#nullable restore
+#line 1 "G:\FreshShop\FreshShop\FreshShop\Views\_ViewImports.cshtml"
+using FreshShop;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 2 "G:\FreshShop\FreshShop\FreshShop\Views\_ViewImports.cshtml"
+using FreshShop.Models;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"92a85e86ebd5078eedcc2e03b3a5e472806f272e", @"/Views/Home/ContactUs.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"56b4e94e6d14acd9ec2c82476f9c946b1e7738b2", @"/Views/_ViewImports.cshtml")]
     public class Views_Home_ContactUs : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     {
+        private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("id", new global::Microsoft.AspNetCore.Html.HtmlString("contactForm"), global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
+        #line hidden
+        #pragma warning disable 0649
+        private global::Microsoft.AspNetCore.Razor.Runtime.TagHelpers.TagHelperExecutionContext __tagHelperExecutionContext;
+        #pragma warning restore 0649
+        private global::Microsoft.AspNetCore.Razor.Runtime.TagHelpers.TagHelperRunner __tagHelperRunner = new global::Microsoft.AspNetCore.Razor.Runtime.TagHelpers.TagHelperRunner();
+        #pragma warning disable 0169
+        private string __tagHelperStringValueBuffer;
+        #pragma warning restore 0169
+        private global::Microsoft.AspNetCore.Razor.Runtime.TagHelpers.TagHelperScopeManager __backed__tagHelperScopeManager = null;
+        private global::Microsoft.AspNetCore.Razor.Runtime.TagHelpers.TagHelperScopeManager __tagHelperScopeManager
+        {
+            get
+            {
+                if (__backed__tagHelperScopeManager == null)
+                {
+                    __backed__tagHelperScopeManager = new global::Microsoft.AspNetCore.Razor.Runtime.TagHelpers.TagHelperScopeManager(StartTagHelperWritingScope, EndTagHelperWritingScope);
+                }
+                return __backed__tagHelperScopeManager;
+            }
+        }
+        private global::Microsoft.AspNetCore.Mvc.TagHelpers.FormTagHelper __Microsoft_AspNetCore_Mvc_TagHelpers_FormTagHelper;
+        private global::Microsoft.AspNetCore.Mvc.TagHelpers.RenderAtEndOfFormTagHelper __Microsoft_AspNetCore_Mvc_TagHelpers_RenderAtEndOfFormTagHelper;
         #pragma warning disable 1998
         public async override global::System.Threading.Tasks.Task ExecuteAsync()
         {
@@ -57,10 +95,11 @@ namespace AspNetCore
                     <div class=""contact-form-right"">
                         <h2>GET IN TOUCH</h2>
                         <p>Feel free to contact us for any queries or giving any kind of feedbacks we respect your reviews.</p>
-                        <form id=""contactForm"">
+                        ");
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "92a85e86ebd5078eedcc2e03b3a5e472806f272e4915", async() => {
+                WriteLiteral(@"
                             <div class=""row"">
-    ");
-            WriteLiteral(@"                            <div class=""col-md-12"">
+                                <div class=""col-md-12"">
                                     <div class=""form-group"">
                                         <input type=""text"" class=""form-control"" id=""name"" name=""name"" placeholder=""Your Name"" required data-error=""Please enter your name"">
                                     </div>
@@ -72,8 +111,8 @@ namespace AspNetCore
                                 </div>
                                 <div class=""col-md-12"">
                                     <div class=""form-group"">
-                                        <input type=""text"" class=""form-control"" id=""message"" name=""message"" placeholder=""Your Message"" required data-err");
-            WriteLiteral(@"or=""Write your message"">
+                                        <input type=""text"" class=""form-control"" id=""message"" name=""");
+                WriteLiteral(@"message"" placeholder=""Your Message"" required data-error=""Write your message"">
                                     </div>
                                     <div class=""submit-button text-center"">
                                         <button class=""btn hvr-hover"" id=""submit"" type=""submit"">Send Message</button>
@@ -82,13 +121,22 @@ namespace AspNetCore
                                     </div>
                                 </div>
                             </div>
-                        </form>
-                    </div>
-                </div>
-                <div class=""col-lg-4 col-sm-12"">
-                    <div class=""contact-info-left"">
-                        <h2>CONTACT INFO</h2>
-");
+                        ");
+            }
+            );
+            __Microsoft_AspNetCore_Mvc_TagHelpers_FormTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.TagHelpers.FormTagHelper>();
+            __tagHelperExecutionContext.Add(__Microsoft_AspNetCore_Mvc_TagHelpers_FormTagHelper);
+            __Microsoft_AspNetCore_Mvc_TagHelpers_RenderAtEndOfFormTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.TagHelpers.RenderAtEndOfFormTagHelper>();
+            __tagHelperExecutionContext.Add(__Microsoft_AspNetCore_Mvc_TagHelpers_RenderAtEndOfFormTagHelper);
+            __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_0);
+            await __tagHelperRunner.RunAsync(__tagHelperExecutionContext);
+            if (!__tagHelperExecutionContext.Output.IsContentModified)
+            {
+                await __tagHelperExecutionContext.SetOutputContentAsync();
+            }
+            Write(__tagHelperExecutionContext.Output);
+            __tagHelperExecutionContext = __tagHelperScopeManager.End();
+            WriteLiteral("\r\n                    </div>\r\n                </div>\r\n                <div class=\"col-lg-4 col-sm-12\">\r\n                    <div class=\"contact-info-left\">\r\n                        <h2>CONTACT INFO</h2>\r\n");
             WriteLiteral(@"                        <ul>
                             <li>
                                 <p><i class=""fas fa-map-marker-alt""></i>Address: Shop No. 10, <br>Rosemerry Street,<br> Ahmedabad </p>

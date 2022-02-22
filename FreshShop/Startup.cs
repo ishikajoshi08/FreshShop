@@ -1,7 +1,9 @@
 using FreshShop.Data;
+using FreshShop.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -17,19 +19,28 @@ namespace FreshShop
     {
         // This method gets called by the runtime. Use this method to add services to the container.
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
-
-        //public Startup(IConfiguration configuration)
-        //{
-        //    Configuration = configuration;
-        //}
+        private readonly IConfiguration _configuration;
+        public Startup(IConfiguration configuration)
+        {
+            _configuration = configuration;
+        }
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<FreshShopContext>(option => option.UseSqlServer("Server=DESKTOP-V83QTNG\\SQLEXPRESS; Database=FreshShopDb; Trusted_Connection=True; MultipleActiveResultSets=true"));
-            
+            services.AddDbContext<FreshShopContext>(option => option.UseSqlServer(_configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddIdentity<IdentityUser, IdentityRole>()
+                .AddEntityFrameworkStores<FreshShopContext>();
             services.AddControllersWithViews();
 #if DEBUG
-            services.AddRazorPages().AddRazorRuntimeCompilation();
+            services.AddRazorPages().AddRazorRuntimeCompilation().AddViewOptions(option => 
+            {
+                option.HtmlHelperOptions.ClientValidationEnabled = true;
+            });
 #endif
+            services.AddScoped<IProductRepository, ProductRepository>();
+
+            services.AddScoped<ICategoryRepository, CategoryRepository>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -44,6 +55,8 @@ namespace FreshShop
 
             app.UseRouting();
 
+            app.UseAuthentication();
+
             app.UseEndpoints(endpoints =>
             {
                 //endpoints.MapGet("/", async context =>
@@ -52,6 +65,10 @@ namespace FreshShop
                 //});
 
                 endpoints.MapDefaultControllerRoute();
+
+                //endpoints.MapControllerRoute(
+                //    name: "default",
+                //    pattern: "FreshShopApp/{controller=Home}")
             });
         }
     }

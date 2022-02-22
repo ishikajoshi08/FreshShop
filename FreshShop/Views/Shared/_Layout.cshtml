@@ -23,6 +23,7 @@
 
 
     <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="~/lib/twitter-bootstrap/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/bootstrap.min.css">
     <!-- Site CSS -->
     <link rel="stylesheet" href="~/css/style.css">
@@ -51,7 +52,7 @@
                                     <i class="fab fa-opencart"></i> 20% off Entire Purchase Promo code: offT80
                                 </li>
                                 <li>
-                                    <i class="fab fa-opencart"></i> 50% - 80% off on Vegetables
+                                    <i class="fab fa-opencart"></i> 50% - 80% off on Fruits
                                 </li>
                                 <li>
                                     <i class="fab fa-opencart"></i> Off 10%! Shop Vegetables
@@ -63,7 +64,7 @@
                                     <i class="fab fa-opencart"></i> Off 10%! Shop Vegetables
                                 </li>
                                 <li>
-                                    <i class="fab fa-opencart"></i> 50% - 80% off on Vegetables
+                                    <i class="fab fa-opencart"></i> 50% - 80% off on Fruits
                                 </li>
                                 <li>
                                     <i class="fab fa-opencart"></i> 20% off Entire Purchase Promo code: offT30
@@ -100,9 +101,13 @@
                         <li>@Html.ActionLink(linkText: "Products", actionName: "GetAllProducts", controllerName: "Product")</li>
                         @*<li>@Html.ActionLink(linkText: "Item1", actionName: "Index", controllerName: "Item1")</li>*@
                         @*<li>@Html.ActionLink(linkText: "Fruits", actionName: "Fruit", controllerName: "Shopping")</li>
-                            <li>@Html.ActionLink(linkText: "Vegetables", actionName: "Vegetable", controllerName: "Shopping")</li>*@
+                        <li>@Html.ActionLink(linkText: "Vegetables", actionName: "Vegetable", controllerName: "Shopping")</li>*@
                         @*<li>@Html.ActionLink(linkText: "Wishlist", actionName: "Wishlist", controllerName: "Shopping")</li>*@
                         <li>@Html.ActionLink(linkText: "Contact Us", actionName: "ContactUs", controllerName: "Home")</li>
+                        @*<li class="nav-item">
+                            <a class="nav-link text-dark" asp-controller="Product" asp-action="AddNewProduct">Add New Product</a>
+                        </li>*@
+                        <li>@Html.ActionLink(linkText: "Add New Product", actionName: "AddNewProduct", controllerName: "Product")</li>
                         <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
                         <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
                     </ul>
@@ -113,7 +118,9 @@
         <!-- End Navigation -->
     </header>
     <!-- End Main Top -->
-    @RenderBody()
+    <main role="main">
+        @RenderBody()
+    </main>
     <!-- Start Instagram Feed  -->
     <div class="instagram-box">
         <div class="main-instagram owl-carousel owl-theme">
@@ -269,6 +276,9 @@
     <script src="~/js/popper.min.js"></script>
     <script src="~/js/bootstrap.min.js"></script>
     <script src="~/lib/jquery/jquery.js"></script>
+    <script src="~/jquery-validate/jquery.validate.js"></script>
+    <script src="~/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+    <script src="~/jquery-ajax-unobtrusive/jquery.unobtrusive-ajax.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <!-- ALL PLUGINS -->

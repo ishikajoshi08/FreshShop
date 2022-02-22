@@ -126,8 +126,6 @@ G:\FreshShop\FreshShop\FreshShop\bin\Debug\net5.0\refs\Microsoft.AspNetCore.Comp
 G:\FreshShop\FreshShop\FreshShop\bin\Debug\net5.0\refs\Microsoft.AspNetCore.Connections.Abstractions.dll
 G:\FreshShop\FreshShop\FreshShop\bin\Debug\net5.0\refs\Microsoft.AspNetCore.CookiePolicy.dll
 G:\FreshShop\FreshShop\FreshShop\bin\Debug\net5.0\refs\Microsoft.AspNetCore.Cors.dll
-G:\FreshShop\FreshShop\FreshShop\bin\Debug\net5.0\refs\Microsoft.AspNetCore.Cryptography.Internal.dll
-G:\FreshShop\FreshShop\FreshShop\bin\Debug\net5.0\refs\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
 G:\FreshShop\FreshShop\FreshShop\bin\Debug\net5.0\refs\Microsoft.AspNetCore.DataProtection.Abstractions.dll
 G:\FreshShop\FreshShop\FreshShop\bin\Debug\net5.0\refs\Microsoft.AspNetCore.DataProtection.dll
 G:\FreshShop\FreshShop\FreshShop\bin\Debug\net5.0\refs\Microsoft.AspNetCore.DataProtection.Extensions.dll
@@ -212,8 +210,6 @@ G:\FreshShop\FreshShop\FreshShop\bin\Debug\net5.0\refs\Microsoft.Extensions.File
 G:\FreshShop\FreshShop\FreshShop\bin\Debug\net5.0\refs\Microsoft.Extensions.Hosting.Abstractions.dll
 G:\FreshShop\FreshShop\FreshShop\bin\Debug\net5.0\refs\Microsoft.Extensions.Hosting.dll
 G:\FreshShop\FreshShop\FreshShop\bin\Debug\net5.0\refs\Microsoft.Extensions.Http.dll
-G:\FreshShop\FreshShop\FreshShop\bin\Debug\net5.0\refs\Microsoft.Extensions.Identity.Core.dll
-G:\FreshShop\FreshShop\FreshShop\bin\Debug\net5.0\refs\Microsoft.Extensions.Identity.Stores.dll
 G:\FreshShop\FreshShop\FreshShop\bin\Debug\net5.0\refs\Microsoft.Extensions.Localization.Abstractions.dll
 G:\FreshShop\FreshShop\FreshShop\bin\Debug\net5.0\refs\Microsoft.Extensions.Localization.dll
 G:\FreshShop\FreshShop\FreshShop\bin\Debug\net5.0\refs\Microsoft.Extensions.Logging.Abstractions.dll
@@ -430,3 +426,10 @@ G:\FreshShop\FreshShop\FreshShop\bin\Debug\net5.0\runtimes\win-x86\native\Micros
 G:\FreshShop\FreshShop\FreshShop\bin\Debug\net5.0\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
 G:\FreshShop\FreshShop\FreshShop\bin\Debug\net5.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 G:\FreshShop\FreshShop\FreshShop\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Design.dll
+G:\FreshShop\FreshShop\FreshShop\obj\Debug\net5.0\Razor\Views\Product\AddNewProduct.cshtml.g.cs
+G:\FreshShop\FreshShop\FreshShop\obj\Debug\net5.0\Razor\Views\_ViewImports.cshtml.g.cs
+G:\FreshShop\FreshShop\FreshShop\bin\Debug\net5.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+G:\FreshShop\FreshShop\FreshShop\bin\Debug\net5.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+G:\FreshShop\FreshShop\FreshShop\bin\Debug\net5.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+G:\FreshShop\FreshShop\FreshShop\bin\Debug\net5.0\Microsoft.Extensions.Identity.Core.dll
+G:\FreshShop\FreshShop\FreshShop\bin\Debug\net5.0\Microsoft.Extensions.Identity.Stores.dll
