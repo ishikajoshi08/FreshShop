@@ -1,5 +1,7 @@
 using FreshShop.Data;
+using FreshShop.Models;
 using FreshShop.Repository;
+using FreshShop.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -28,9 +30,27 @@ namespace FreshShop
         {
             services.AddDbContext<FreshShopContext>(option => option.UseSqlServer(_configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddIdentity<IdentityUser, IdentityRole>()
-                .AddEntityFrameworkStores<FreshShopContext>();
+            services.AddIdentity<ApplicationUser, IdentityRole>()
+                .AddEntityFrameworkStores<FreshShopContext>().AddDefaultTokenProviders();
+            services.Configure<IdentityOptions>(options =>
+            {
+                //options.Password.RequiredLength = 5;
+                //options.Password.RequiredUniqueChars = 1;
+                //options.Password.RequireDigit = false;
+                //options.Password.RequireLowercase = false;
+                //options.Password.RequireNonAlphanumeric = false;
+                //options.Password.RequireUppercase = false;
+
+                options.SignIn.RequireConfirmedEmail = true;
+            });
+
+            services.ConfigureApplicationCookie(config =>
+            {
+                config.LoginPath = _configuration["Application:LoginPath"];
+            });
+
             services.AddControllersWithViews();
+
 #if DEBUG
             services.AddRazorPages().AddRazorRuntimeCompilation().AddViewOptions(option => 
             {
@@ -40,6 +60,16 @@ namespace FreshShop
             services.AddScoped<IProductRepository, ProductRepository>();
 
             services.AddScoped<ICategoryRepository, CategoryRepository>();
+
+            services.AddScoped<IAccountRepository, AccountRepository>();
+
+            services.AddScoped<IUserService, UserService>();
+
+            services.AddScoped<IEmailService, EmailService>();
+
+            services.AddScoped<IUserClaimsPrincipalFactory<ApplicationUser>, ApplicationUserClaimsPrincipalFactory>();
+
+            services.Configure<SMTPConfigModel>(_configuration.GetSection("SMTPConfig"));
 
         }
 
@@ -56,7 +86,7 @@ namespace FreshShop
             app.UseRouting();
 
             app.UseAuthentication();
-
+            app.UseAuthorization();
             app.UseEndpoints(endpoints =>
             {
                 //endpoints.MapGet("/", async context =>
@@ -69,6 +99,12 @@ namespace FreshShop
                 //endpoints.MapControllerRoute(
                 //    name: "default",
                 //    pattern: "FreshShopApp/{controller=Home}")
+
+                endpoints.MapControllerRoute(
+                name: "MyArea",
+                pattern: "{area:exists}/{controller=Dashboard}/{action=Index}/{id?}"
+                );
+
             });
         }
     }

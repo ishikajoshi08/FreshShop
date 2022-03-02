@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using FreshShop.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace FreshShop.Data
 {
-    public class FreshShopContext : IdentityDbContext
+    public class FreshShopContext : IdentityDbContext<ApplicationUser>
     {
         public FreshShopContext(DbContextOptions<FreshShopContext> options) : base(options)
         {

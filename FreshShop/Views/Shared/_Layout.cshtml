@@ -108,8 +108,7 @@
                             <a class="nav-link text-dark" asp-controller="Product" asp-action="AddNewProduct">Add New Product</a>
                         </li>*@
                         <li>@Html.ActionLink(linkText: "Add New Product", actionName: "AddNewProduct", controllerName: "Product")</li>
-                        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                        <partial name="_LoginInfo" />
                     </ul>
                 </div>
             </div>

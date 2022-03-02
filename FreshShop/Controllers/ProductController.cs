@@ -1,6 +1,7 @@
 ﻿using FreshShop.Data;
 using FreshShop.Models;
 using FreshShop.Repository;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -45,7 +46,7 @@ namespace FreshShop.Controllers
             return _productRepository.SearchProduct(productName, desc, price, category);
         }
 
-        [HttpGet]
+        [Authorize]
         public async Task<ViewResult> AddNewProduct(bool isSuccess = false, int productId = 0)
         {
             var model = new ProductModel();
