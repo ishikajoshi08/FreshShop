@@ -21,7 +21,7 @@ namespace FreshShop.Models
         public string Description { get; set; }
 
         [Required(ErrorMessage = "Please enter Product Price")]
-        public string Price { get; set; }
+        public decimal Price { get; set; }
 
         [Required(ErrorMessage = "Please enter Product Category")]
         public int CategoryId { get; set; }
@@ -35,6 +35,8 @@ namespace FreshShop.Models
         public IFormFileCollection GalleryFiles { get; set; }
 
         public List<GalleryModel> Gallery { get; set; }
+
+        public bool IsAvailable { get; set; }
 
     }
 }

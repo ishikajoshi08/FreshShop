@@ -1,0 +1,96 @@
+[
+  {
+    "outputFileName": "wwwroot/css/user.min.css",
+    "inputFiles": [
+      "wwwroot/css/all.css",
+      "wwwroot/css/animate.css",
+      "wwwroot/css/baguetteBox.min.css",
+      "wwwroot/css/bootsnav.css",
+      "wwwroot/css/bootstrap.min.css",
+      "wwwroot/css/bootstrap-select.css",
+      "wwwroot/css/carousel-ticker.css",
+      "wwwroot/css/code_animate.css",
+      "wwwroot/css/custom.css",
+      "wwwroot/css/jquery-ui.css",
+      "wwwroot/css/owl.carousel.min.css",
+      "wwwroot/css/responsive.css",
+      "wwwroot/css/Signup.css",
+      "wwwroot/css/site.css",
+      "wwwroot/css/style.css",
+      "wwwroot/css/superslides.css"
+    ],
+    "minify": {
+      "enabled": false,
+      "renameLocals": true
+    }
+  },
+  {
+    "outputFileName": "wwwroot/admin_css/admin.min.css",
+    "inputFiles": [
+      "wwwroot/admin_css/bootstrap.min.css",
+      "wwwroot/admin_css/c3.css",
+      "wwwroot/admin_css/chartist.css",
+      "wwwroot/admin_css/flag-icon.min.css",
+      "wwwroot/admin_css/fontawesome-all.css",
+      "wwwroot/admin_css/materialdesignicons.min.css",
+      "wwwroot/admin_css/morris.css",
+      "wwwroot/admin_css/style.css",
+      "wwwroot/admin_css/style1.css"
+    ],
+    "minify": {
+      "enabled": false,
+      "renameLocals": true
+    }
+  },
+  {
+    "outputFileName": "wwwroot/js/user.min.js",
+    "inputFiles": [
+      "wwwroot/js/ai.0.22.9-build00167.js",
+      "wwwroot/js/baguetteBox.min.js",
+      "wwwroot/js/bootsnav.js",
+      "wwwroot/js/bootstrap.js",
+      "wwwroot/js/bootstrap-select.js",
+      "wwwroot/js/contact-form-script.js",
+      "wwwroot/js/custom.js",
+      "wwwroot/js/form-validator.min.js",
+      "wwwroot/js/images-loded.min.js",
+      "wwwroot/js/inewsticker.js",
+      "wwwroot/js/isotope.min.js",
+      "wwwroot/js/jquery.nicescroll.min.js",
+      "wwwroot/js/jquery.superslides.min.js",
+      "wwwroot/js/jquery.validate.js",
+      "wwwroot/js/jquery-1.10.2.js",
+      "wwwroot/js/jquery-3.2.1.min.js",
+      "wwwroot/js/jquery-ui.js",
+      "wwwroot/js/modernizr-2.6.2.js",
+      "wwwroot/js/owl.carousel.min.js",
+      "wwwroot/js/popper.min.js",
+      "wwwroot/js/site.js"
+    ],
+    "minify": {
+      "enabled": false,
+      "renameLocals": true
+    }
+  },
+  {
+    "outputFileName": "wwwroot/admin_js/admin.min.js",
+    "inputFiles": [
+      "wwwroot/admin_js/bootstrap.bundle.js",
+      "wwwroot/admin_js/c3.min.js",
+      "wwwroot/admin_js/C3chartjs.js",
+      "wwwroot/admin_js/chartist.js",
+      "wwwroot/admin_js/d3-5.4.0.min.js",
+      "wwwroot/admin_js/dashboard-ecommerce.js",
+      "wwwroot/admin_js/jquery.slimscroll.js",
+      "wwwroot/admin_js/jquery.sparkline.js",
+      "wwwroot/admin_js/jquery-3.3.1.min.js",
+      "wwwroot/admin_js/main-js.js",
+      "wwwroot/admin_js/morris.js",
+      "wwwroot/admin_js/raphael.min.js"
+    ],
+    "minify": {
+      "enabled": false,
+      "renameLocals": true
+    }
+  }
+  ]

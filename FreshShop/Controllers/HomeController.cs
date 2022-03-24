@@ -22,7 +22,7 @@ namespace FreshShop.Controllers
             _emailService = emailService;
         }
         
-        public async Task<ViewResult> Index()
+        public ViewResult Index()
         {
             //UserEmailOptions options = new UserEmailOptions
             //{

@@ -1,0 +1,92 @@
+﻿<!doctype html>
+<html lang="en">
+@using FreshShop.Data;
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model IEnumerable<Products>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout1.cshtml";
+}
+<head>
+    <link rel="stylesheet" type="text/css" href="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/css/jquery.dataTables.css">
+</head>
+<body>
+    <br />
+    <br />
+    <div class="row" style="margin-left: 280px; width: 66rem;">
+        <div class="col-6">
+            <h2 class="text-info">Products List</h2>
+        </div>
+        <div class="col-6 text-right">
+            <a asp-action="AddNewProduct" class="btn btn-info" asp-controller="Product"><i class="fas fa-plus"></i>&nbsp; Add New Product</a>
+        </div>
+    </div>
+    <form method="post" asp-action="Index" asp-controller="AdminProduct">
+        <div class="row" style="margin-left: 280px;width:50rem;">
+            <div class="col-3">
+                <input type="number" class="form-control" name="lowAmount" autocomplete="off" placeholder="Enter Lower Price" />
+            </div>
+            <div class="col-3">
+                <input type="number" class="form-control" name="largeAmount" autocomplete="off" placeholder="Enter Higher Price" />
+            </div>
+            <div class="col-2">
+                <input type="submit" value="Search" class="btn btn-success" />
+            </div>
+        </div>
+    </form>
+    <br />
+    <div style="margin-left:280px;">
+        <table class="table table-striped border" style="width:65rem;" id="myTable">
+            <thead>
+                <tr class="table-info">
+                    <th>
+                        @Html.DisplayNameFor(expression: c => c.ProductName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(expression: c => c.Price)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(expression: c => c.IsAvailable)
+                    </th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.ProductName</td>
+                        <td>@item.Price</td>
+                        <td>@item.IsAvailable</td>
+                        <td>
+                            <partial name="_ButtonPartial" model="@item.Id" />
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js"></script>
+    @*<script type="text/javascript">
+            $(function (){
+                var save = '@TempData["save"]'
+                if (save != '') {
+                    alertify.success(save);
+                }
+                var update = '@TempData["update"]'
+                if (update != '') {
+                    alertify.success(edit);
+                }
+            })
+        </script>*@
+    <script>
+        $(document).ready(function () {
+            $('#myTable').DataTable();
+        });
+    </script>
+</body>
+</html>
+    

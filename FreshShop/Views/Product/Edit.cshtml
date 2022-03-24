@@ -1,0 +1,80 @@
+﻿@model FreshShop.Data.Products
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@inject FreshShop.Repository.ICategoryRepository _categoryRepo
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout1.cshtml";
+}
+<br />
+<h2 class="text-info" style="margin-left:400px">Edit Product</h2>
+
+<form asp-action="Edit" method="post">
+    <div class="p-4 rounded border" style="margin-left:400px">
+        <div asp-validation-summary="ModelOnly" class="text-danger">
+
+        </div>
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="ProductName" class="control-label"></label>
+            </div>
+            <div class="col-5">
+                <input type="hidden" asp-for="Id" />
+                <input type="text" asp-for="ProductName" class="form-control" />
+            </div>
+            <span asp-validation-for="ProductName" class="text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="CategoryId" class="control-label">Category</label>
+            </div>
+            <div class="col-5">
+                <select asp-for="CategoryId" class="form-control" asp-items="(await _categoryRepo.GetCategories()).Select(x => new SelectListItem() { Text = x.Name,Value=x.Id.ToString()})">
+                    <option value="">Please choose Product Category</option>
+                </select>
+            </div>
+            <span asp-validation-for="CategoryId" class="text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="Price" class="control-label"></label>
+            </div>
+            <div class="col-5">
+                <input type="number" asp-for="Price" class="form-control" />
+            </div>
+            <span asp-validation-for="Price" class="text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="Description" class="control-label"></label>
+            </div>
+            <div class="col-5">
+                <textarea asp-for="Description" class="form-control" rows="3"></textarea>
+            </div>
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="CoverPhoto" class="control-label">Image</label>
+            </div>
+            <div class="col-5">
+                <input type="file" asp-for="CoverPhoto" class="form-control">
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="IsAvailable" class="control-label">Available</label>
+            </div>
+            <div class="col-5">
+                <input asp-for="IsAvailable" type="checkbox">
+            </div>
+        </div>
+        <div class="form-group">
+            <input type="submit" class="btn btn-primary" value="Update" />
+            <a asp-action="Index" class="btn btn-success" asp-controller="AdminProduct" asp-area="Admin">Back to List</a>
+        </div>
+        <div class="col-1"></div>
+        <div class="col-3">
+            <img src="~/@Model.CoverImageUrl" width="100%" />
+        </div>
+    </div>
+</form>

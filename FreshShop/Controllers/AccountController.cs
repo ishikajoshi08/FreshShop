@@ -65,6 +65,10 @@ namespace FreshShop.Controllers
                 {
                     ModelState.AddModelError("", "Not allowed to login");
                 }
+                else if(result.IsLockedOut)
+                {
+                    ModelState.AddModelError("", "Account blocked! Please try after sometime.");
+                }
                 else
                 {
                     ModelState.AddModelError("", "Invaild credentials");

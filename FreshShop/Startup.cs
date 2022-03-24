@@ -42,6 +42,14 @@ namespace FreshShop
                 //options.Password.RequireUppercase = false;
 
                 options.SignIn.RequireConfirmedEmail = true;
+
+                options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
+                options.Lockout.MaxFailedAccessAttempts = 3;
+            });
+
+            services.Configure<DataProtectionTokenProviderOptions>(options =>
+            {
+                options.TokenLifespan = TimeSpan.FromMinutes(5);
             });
 
             services.ConfigureApplicationCookie(config =>

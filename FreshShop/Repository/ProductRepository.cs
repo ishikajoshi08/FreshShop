@@ -26,7 +26,8 @@ namespace FreshShop.Repository
                 Price = model.Price,
                 CategoryId = model.CategoryId,
                 UpdatedOn = DateTime.UtcNow,
-                CoverImageUrl = model.CoverImageUrl
+                CoverImageUrl = model.CoverImageUrl,
+                IsAvailable = model.IsAvailable
             };
 
             newProduct.productGallery = new List<ProductGallery>();
@@ -59,7 +60,9 @@ namespace FreshShop.Repository
                         Price = product.Price,
                         Id = product.Id,
                         CategoryId = product.CategoryId,
-                        CoverImageUrl = product.CoverImageUrl
+                        CoverImageUrl = product.CoverImageUrl,
+                        IsAvailable = product.IsAvailable
+
                         //Category = product.Category.Name                       
                     });
                 }
@@ -79,6 +82,7 @@ namespace FreshShop.Repository
                     CategoryId = product.CategoryId,
                     Category = product.Category.Name,
                     CoverImageUrl = product.CoverImageUrl,
+                    IsAvailable = product.IsAvailable,
                     Gallery = product.productGallery.Select(g => new GalleryModel()
                     {
                         Id = g.Id,

@@ -415,8 +415,6 @@ G:\FreshShop\FreshShop\FreshShop\obj\Debug\net5.0\scopedcss\bundle\FreshShop.sty
 G:\FreshShop\FreshShop\FreshShop\obj\Debug\net5.0\FreshShop.TagHelpers.input.cache
 G:\FreshShop\FreshShop\FreshShop\obj\Debug\net5.0\FreshShop.TagHelpers.output.cache
 G:\FreshShop\FreshShop\FreshShop\obj\Debug\net5.0\FreshShop.RazorCoreGenerate.cache
-G:\FreshShop\FreshShop\FreshShop\obj\Debug\net5.0\Razor\Areas\Admin\Views\AdminProduct\AddNewProduct.cshtml.g.cs
-G:\FreshShop\FreshShop\FreshShop\obj\Debug\net5.0\Razor\Areas\Admin\Views\AdminProduct\ViewProduct.cshtml.g.cs
 G:\FreshShop\FreshShop\FreshShop\obj\Debug\net5.0\Razor\Areas\Admin\Views\AdminUser\AddNewUser.cshtml.g.cs
 G:\FreshShop\FreshShop\FreshShop\obj\Debug\net5.0\Razor\Areas\Admin\Views\AdminUser\ViewUser.cshtml.g.cs
 G:\FreshShop\FreshShop\FreshShop\obj\Debug\net5.0\Razor\Areas\Admin\Views\Dashboard\Index.cshtml.g.cs
@@ -443,6 +441,12 @@ G:\FreshShop\FreshShop\FreshShop\obj\Debug\net5.0\FreshShop.dll
 G:\FreshShop\FreshShop\FreshShop\obj\Debug\net5.0\ref\FreshShop.dll
 G:\FreshShop\FreshShop\FreshShop\obj\Debug\net5.0\FreshShop.pdb
 G:\FreshShop\FreshShop\FreshShop\obj\Debug\net5.0\FreshShop.genruntimeconfig.cache
-G:\FreshShop\FreshShop\FreshShop\obj\Debug\net5.0\FreshShop.csproj.AssemblyReference.cache
 G:\FreshShop\FreshShop\FreshShop\obj\Debug\net5.0\Razor\Views\Account\ForgotPassword.cshtml.g.cs
 G:\FreshShop\FreshShop\FreshShop\obj\Debug\net5.0\Razor\Views\Account\ResetPassword.cshtml.g.cs
+G:\FreshShop\FreshShop\FreshShop\bin\Debug\net5.0\bundleconfig.json
+G:\FreshShop\FreshShop\FreshShop\obj\Debug\net5.0\FreshShop.csproj.AssemblyReference.cache
+G:\FreshShop\FreshShop\FreshShop\obj\Debug\net5.0\Razor\Areas\Admin\Views\AdminProduct\Index.cshtml.g.cs
+G:\FreshShop\FreshShop\FreshShop\obj\Debug\net5.0\Razor\Views\Shared\_ButtonPartial.cshtml.g.cs
+G:\FreshShop\FreshShop\FreshShop\obj\Debug\net5.0\Razor\Views\Product\Edit.cshtml.g.cs
+G:\FreshShop\FreshShop\FreshShop\obj\Debug\net5.0\Razor\Views\Product\Details.cshtml.g.cs
+G:\FreshShop\FreshShop\FreshShop\obj\Debug\net5.0\Razor\Views\Product\Delete.cshtml.g.cs
