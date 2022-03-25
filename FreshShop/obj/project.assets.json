@@ -2,6 +2,9 @@
   "version": 3,
   "targets": {
     "net5.0": {
+      "AlertifyJS/1.13.1": {
+        "type": "package"
+      },
       "BuildBundlerMinifier/3.2.449": {
         "type": "package",
         "build": {
@@ -2136,6 +2139,35 @@
     }
   },
   "libraries": {
+    "AlertifyJS/1.13.1": {
+      "sha512": "lJyjcEN++TZP+U1jpNSMEBCI53hsNvexvAEOwo2+W4BjRAq81ElX0cRCgbfHPMKGauvXVPvlo6aAio4tJumy7w==",
+      "type": "package",
+      "path": "alertifyjs/1.13.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "alertifyjs.1.13.1.nupkg.sha512",
+        "alertifyjs.nuspec",
+        "content/Content/alertifyjs/alertify.css",
+        "content/Content/alertifyjs/alertify.min.css",
+        "content/Content/alertifyjs/alertify.rtl.css",
+        "content/Content/alertifyjs/alertify.rtl.min.css",
+        "content/Content/alertifyjs/themes/bootstrap.css",
+        "content/Content/alertifyjs/themes/bootstrap.min.css",
+        "content/Content/alertifyjs/themes/bootstrap.rtl.css",
+        "content/Content/alertifyjs/themes/bootstrap.rtl.min.css",
+        "content/Content/alertifyjs/themes/default.css",
+        "content/Content/alertifyjs/themes/default.min.css",
+        "content/Content/alertifyjs/themes/default.rtl.css",
+        "content/Content/alertifyjs/themes/default.rtl.min.css",
+        "content/Content/alertifyjs/themes/semantic.css",
+        "content/Content/alertifyjs/themes/semantic.min.css",
+        "content/Content/alertifyjs/themes/semantic.rtl.css",
+        "content/Content/alertifyjs/themes/semantic.rtl.min.css",
+        "content/Scripts/alertify.js",
+        "content/Scripts/alertify.min.js"
+      ]
+    },
     "BuildBundlerMinifier/3.2.449": {
       "sha512": "uA9sYDy4VepL3xwzBTLcP2LyuVYMt0ZIT3gaSiXvGoX15Ob+rOP+hGydhevlSVd+rFo+Y+VQFEHDuWU8HBW+XA==",
       "type": "package",
@@ -7460,6 +7492,7 @@
   },
   "projectFileDependencyGroups": {
     "net5.0": [
+      "AlertifyJS >= 1.13.1",
       "BuildBundlerMinifier >= 3.2.449",
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 5.0.14",
       "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation >= 3.1.22",
@@ -7510,6 +7543,10 @@
       "net5.0": {
         "targetAlias": "net5.0",
         "dependencies": {
+          "AlertifyJS": {
+            "target": "Package",
+            "version": "[1.13.1, )"
+          },
           "BuildBundlerMinifier": {
             "target": "Package",
             "version": "[3.2.449, )"

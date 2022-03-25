@@ -4,14 +4,16 @@ using FreshShop.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace FreshShop.Migrations
 {
     [DbContext(typeof(FreshShopContext))]
-    partial class FreshShopContextModelSnapshot : ModelSnapshot
+    [Migration("20220324174926_columnquantityadded")]
+    partial class columnquantityadded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -178,58 +180,6 @@ namespace FreshShop.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
-            modelBuilder.Entity("FreshShop.Models.Order", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Address")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("OrderDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("OrderNo")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PhoneNo")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Orders");
-                });
-
-            modelBuilder.Entity("FreshShop.Models.OrderDetails", b =>
-                {
-                    b.Property<int>("Id")
-                        .HasColumnType("int");
-
-                    b.Property<int>("OId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("OrderId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("OrderId");
-
-                    b.ToTable("OrderDetails");
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
                     b.Property<string>("Id")
@@ -383,25 +333,6 @@ namespace FreshShop.Migrations
                     b.Navigation("Category");
                 });
 
-            modelBuilder.Entity("FreshShop.Models.OrderDetails", b =>
-                {
-                    b.HasOne("FreshShop.Data.Products", "Products")
-                        .WithMany()
-                        .HasForeignKey("Id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("FreshShop.Models.Order", "Order")
-                        .WithMany("OrderDetails")
-                        .HasForeignKey("OrderId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Order");
-
-                    b.Navigation("Products");
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -461,11 +392,6 @@ namespace FreshShop.Migrations
             modelBuilder.Entity("FreshShop.Data.Products", b =>
                 {
                     b.Navigation("productGallery");
-                });
-
-            modelBuilder.Entity("FreshShop.Models.Order", b =>
-                {
-                    b.Navigation("OrderDetails");
                 });
 #pragma warning restore 612, 618
         }

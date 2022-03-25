@@ -450,3 +450,5 @@ G:\FreshShop\FreshShop\FreshShop\obj\Debug\net5.0\Razor\Views\Shared\_ButtonPart
 G:\FreshShop\FreshShop\FreshShop\obj\Debug\net5.0\Razor\Views\Product\Edit.cshtml.g.cs
 G:\FreshShop\FreshShop\FreshShop\obj\Debug\net5.0\Razor\Views\Product\Details.cshtml.g.cs
 G:\FreshShop\FreshShop\FreshShop\obj\Debug\net5.0\Razor\Views\Product\Delete.cshtml.g.cs
+G:\FreshShop\FreshShop\FreshShop\obj\Debug\net5.0\Razor\Views\Cart\Index.cshtml.g.cs
+G:\FreshShop\FreshShop\FreshShop\obj\Debug\net5.0\Razor\Views\Order\Checkout.cshtml.g.cs

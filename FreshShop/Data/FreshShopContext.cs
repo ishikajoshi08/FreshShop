@@ -20,5 +20,10 @@ namespace FreshShop.Data
         public DbSet<ProductGallery> ProductGallery { get; set; }
 
         public DbSet<Category> Category { get; set; }
+
+        public DbSet<Order> Orders { get; set; }
+
+        public DbSet<OrderDetails> OrderDetails { get; set; }
+
     }
 }

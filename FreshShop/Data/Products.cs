@@ -18,6 +18,7 @@ namespace FreshShop.Data
         public DateTime UpdatedOn { get; set; }
         public Category Category { get; set; }
         public ICollection<ProductGallery> productGallery { get; set; }
+        public int Quantity { get; set; }
         public bool IsAvailable { get; set; }
     }
 }

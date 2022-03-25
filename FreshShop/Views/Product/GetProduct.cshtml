@@ -79,15 +79,31 @@
             </div>
 
             <div>
-                <div class="col-md-4">
-                    <button class="btn btn-success p-3 m-3" style="font-size:15px;">
-                        Add to Cart
-                    </button>
-                </div>
+                @*<div class="col-md-4">
+                    @if (productModel != null)
+                    {
+                        <button type="submit" class="btn btn-danger form-control" asp-action="Remove" asp-controller="Product" asp-route-id="@Model.Id">Remove from Cart</button>
+                    }
+                    else
+                    {
+                        <a class="btn btn-success p-3 m-3" style="font-size:15px;" asp-action="Detail1" asp-controller="Product">Add to Cart</a>
+                    }
+                </div>*@
                 <div class="col-md-4">
                     <a class="btn btn-primary p-3 m-3" style="font-size:15px;" asp-action="GetAllProducts" asp-controller="Product">
                         Back to List
                     </a>
+                </div>
+                
+                <div class="col-md-4">
+                    @if (Model.IsAvailable)
+                    {
+                        <a class="btn btn-success p-3 m-3" style="font-size:15px;" asp-action="Buy" asp-controller="Cart" asp-route-id="@Model.Id">Add to Cart</a>
+                    }
+                    else
+                    {
+                        <button class="btn btn-success p-3 m-3" style="font-size:15px;" asp-action="Buy" asp-controller="Cart" asp-route-id="@Model.Id" disabled>Add to Cart</button>
+                    }
                 </div>
             </div>
         </div>

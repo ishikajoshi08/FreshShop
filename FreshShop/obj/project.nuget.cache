@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "E35DCn7HFn/24J6ZmQFqNsyrVTEIRimWd7rZoIV5vf/Jr55SRv4LfNLC8iGMc7f1LWUM7isHq0JVvuy7TTGNJA==",
+  "dgSpecHash": "iNNEKd9r9VZQ/DXkIrGpHtUFS2G8IP8+1KIPB1LkE04LTfoBFgbtwbVfd2DP9DZtBetQqSFr9zB6ETrKRPES/g==",
   "success": true,
   "projectFilePath": "G:\\FreshShop\\FreshShop\\FreshShop\\FreshShop.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Dell\\.nuget\\packages\\alertifyjs\\1.13.1\\alertifyjs.1.13.1.nupkg.sha512",
     "C:\\Users\\Dell\\.nuget\\packages\\buildbundlerminifier\\3.2.449\\buildbundlerminifier.3.2.449.nupkg.sha512",
     "C:\\Users\\Dell\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Dell\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\5.0.14\\microsoft.aspnetcore.cryptography.internal.5.0.14.nupkg.sha512",

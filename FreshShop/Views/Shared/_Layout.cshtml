@@ -23,7 +23,6 @@
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
-
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="~/lib/twitter-bootstrap/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/bootstrap.min.css">
@@ -103,10 +102,11 @@
                         <li>@Html.ActionLink(linkText: "Products", actionName: "GetAllProducts", controllerName: "Product")</li>
                         <li>@Html.ActionLink(linkText: "Contact Us", actionName: "ContactUs", controllerName: "Home")</li>
                         @*<li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="Product" asp-action="AddNewProduct">Add New Product</a>
-                        </li>*@
+                                <a class="nav-link text-dark" asp-controller="Product" asp-action="AddNewProduct">Add New Product</a>
+                            </li>*@
                         @*<li>@Html.ActionLink(linkText: "Add New Product", actionName: "AddNewProduct", controllerName: "Product")</li>*@
                         <partial name="_LoginInfo" />
+                        @*<li>@Html.ActionLink(linkText: "", actionName: "Index", controllerName: "Cart")<i class="fas fa-shopping-cart"></i></li>*@
                     </ul>
                 </div>
             </div>

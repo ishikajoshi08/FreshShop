@@ -1,6 +1,7 @@
 ﻿using FreshShop.Data;
 using FreshShop.Models;
 using FreshShop.Repository;
+using FreshShop.Utility;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -106,7 +107,7 @@ namespace FreshShop.Controllers
 
         private async Task<string> UploadImage(string folderPath, IFormFile file)
         {
-            folderPath += Guid.NewGuid().ToString() + "_" + file.FileName;
+            folderPath += /*Guid.NewGuid().ToString() + "_" +*/ file.FileName;
             string serverfolder = Path.Combine(_webHostEnvironment.WebRootPath, folderPath);
             await file.CopyToAsync(new FileStream(serverfolder, FileMode.Create));
             return "/" + folderPath;

@@ -1,0 +1,93 @@
+﻿@model Order
+@using FreshShop.Data;
+@using FreshShop.Utility;
+@using Microsoft.AspNetCore.Http;
+@inject IHttpContextAccessor HttpContextAccessor
+@{
+    ViewData["Title"] = "Order Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{
+    List<Products> products = HttpContextAccessor.HttpContext.Session.GetObjectFromJson<List<Products>>("products");
+
+    if (products == null)
+    {
+        products = new List<Products>();
+    }
+}
+
+<div class="container">
+    <h3 class="display-4">Order details</h3>
+    <form asp-action="Checkout" method="post" enctype="multipart/form-data">
+        <div class="p-4 rounded border row">
+            <div asp-validation-summary="ModelOnly" class="text-danger">
+
+            </div>
+            <div class="col-md-6">
+                <div class="form-group row">
+                    <div class="col-12">
+                        <span class="label" style="color:black;font-size:20px;">Name:</span>
+                        <input type="text" asp-for="Name" class="form-control" />
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-md-12">
+                        <span class="label" style="color:black;font-size:20px;">PhoneNo:</span>
+                        <input type="text" asp-for="PhoneNo" class="form-control" />
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-md-12">
+                        <span class="label" style="color:black;font-size:20px;">Address:</span>
+                        <input type="text" asp-for="Address" class="form-control" />
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-md-12">
+                        <span class="label" style="color:black;font-size:20px;">Email:</span>
+                        <input type="text" asp-for="Email" class="form-control" />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-12">
+                        <span class="label" style="color:black;font-size:20px;">OrderDate:</span>
+                        <input type="date" asp-for="OrderDate" class="form-control" />
+                    </div>
+                </div>
+
+                <div class="col-6">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Image</th>
+                                <th>Name</th>
+                                <th>Price</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in products)
+                            {
+                                <tr>
+                                    <td>
+                                        <img src="@item.CoverImageUrl" style="width:15rem;height:15rem" class="img-rounded" />
+                                    </td>
+                                    <td>@item.ProductName</td>
+                                    <td>@item.Price</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+
+
+
+

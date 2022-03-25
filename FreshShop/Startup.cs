@@ -32,6 +32,7 @@ namespace FreshShop
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<FreshShopContext>().AddDefaultTokenProviders();
+
             services.Configure<IdentityOptions>(options =>
             {
                 //options.Password.RequiredLength = 5;
@@ -46,6 +47,14 @@ namespace FreshShop
                 options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
                 options.Lockout.MaxFailedAccessAttempts = 3;
             });
+
+            //services.AddSession(options =>
+            //{
+            //    options.IdleTimeout = TimeSpan.FromMinutes(20);
+            //    //options.Cookie.HttpOnly = true;
+            //    options.Cookie.IsEssential = true;
+            //});
+            services.AddSession();
 
             services.Configure<DataProtectionTokenProviderOptions>(options =>
             {
@@ -90,9 +99,9 @@ namespace FreshShop
             }
 
             app.UseStaticFiles();
-
+            app.UseSession();
+            app.UseCookiePolicy();
             app.UseRouting();
-
             app.UseAuthentication();
             app.UseAuthorization();
             app.UseEndpoints(endpoints =>
