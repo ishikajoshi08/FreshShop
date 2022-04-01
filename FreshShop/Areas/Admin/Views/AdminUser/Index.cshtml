@@ -1,0 +1,88 @@
+﻿<!doctype html>
+<html lang="en">
+@model IEnumerable<FreshShop.Models.ApplicationUser>
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    ViewData["Title"] = "User Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout1.cshtml";
+}
+<head>
+    <link rel="stylesheet" type="text/css" href="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/css/jquery.dataTables.css">
+</head>
+<body>
+    <br />
+    <br />
+    <div class="row" style="margin-left: 280px; width: 66rem;">
+        <div class="col-6">
+            <h2 style="color:black"><b>User List</b></h2>
+        </div>
+        <div class="col-6 text-right">
+            <a asp-action="AddNewUser" class="btn btn-info" asp-controller="AdminUser"><i class="fas fa-plus"></i>&nbsp; Add New User</a>
+        </div>
+    </div>
+    <br />
+    <div style="margin-left:280px;">
+        <table class="table table-striped border" style="width:65rem;" id="myTable">
+            <thead>
+                <tr class="table-info">
+                    <th>
+                        <b style="color:black">Name</b>
+                    </th>
+                    <th>
+                        <b style="color:black">UserName</b>
+                    </th>
+                    <th>
+                        <b style="color:black">Status</b>
+                    </th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model != null)
+                {
+                    foreach (var item in Model)
+                    {
+                <tr>
+                    <td>@item.Name</td>
+                    <td>@item.UserName</td>
+                    @if (item.LockoutEnd > DateTime.Now && item.LockoutEnd != null)
+                    {
+                        <td>Inactive</td>
+                        <td>
+                            <div class="btn-group" style="width:0rem;">
+                                <a asp-action="Active" asp-controller="AdminUser" class="btn btn-primary" asp-route-id="@item.Id">
+                                    <i class="far fa-edit"></i>
+                                </a>
+                                <a asp-action="Delete" asp-controller="AdminUser" class="btn btn-danger" asp-route-id="@item.Id">
+                                    <i class="fas fa-trash-alt"></i>
+                                </a>
+                            </div>
+                        </td>
+                    }
+                    else
+                    {
+                        <td>Active</td>
+                        <td>
+                            <partial name="_UserButtonPartial" model="@item.Id" />
+                        </td>
+                    }
+
+                </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
+@*<script src="//cdn.jsdelivr.net/npm/alertifyjs@1.11.2/build/alertify.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            var save = '@TempData["save"]'
+            if (save != '') {
+                alertify.success(save);
+            }
+        })
+    </script>*@
+

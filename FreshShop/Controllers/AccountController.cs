@@ -1,6 +1,8 @@
-﻿using FreshShop.Models;
+﻿using FreshShop.Data;
+using FreshShop.Models;
 using FreshShop.Repository;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -12,10 +14,12 @@ namespace FreshShop.Controllers
     public class AccountController : Controller
     {
         private readonly IAccountRepository _accountRepository;
+        private FreshShopContext _db;
 
-        public AccountController(IAccountRepository accountRepository)
+        public AccountController(IAccountRepository accountRepository, FreshShopContext db)
         {
             _accountRepository = accountRepository;
+            _db = db;
         }
         [Route("signup")]
         public IActionResult Signup()
@@ -59,6 +63,19 @@ namespace FreshShop.Controllers
                 var result = await _accountRepository.PasswordSignInAsync(signInModel);
                 if (result.Succeeded)
                 {
+                    var userInfo = _db.Users.FirstOrDefault(c => c.UserName.ToLower() == signInModel.Email.ToLower());
+                    var roleInfo = (from ur in _db.UserRoles
+                                    join r in _db.Roles on ur.RoleId equals r.Id
+                                    where ur.UserId == userInfo.Id
+                                    select new SessionUserVm()
+                                    {
+                                        UserName = signInModel.Email,
+                                        RoleName = r.Name
+                                    }).FirstOrDefault();
+                    if (roleInfo != null)
+                    {
+                        HttpContext.Session.SetString(key: "roleName", value: roleInfo.RoleName);
+                    }
                     return RedirectToAction("GetAllProducts", "Product");
                 }
                 if (result.IsNotAllowed)

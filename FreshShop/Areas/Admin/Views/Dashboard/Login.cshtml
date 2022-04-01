@@ -1,0 +1,95 @@
+﻿@model FreshShop.Models.SignInModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+    <!-- Site Icons -->
+    <link rel="shortcut icon" href="~/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="~/images/apple-touch-icon.png">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+
+    <!--Bootstrap CSS -->
+    <link rel="stylesheet" href="~/lib/twitter-bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/bootstrap.min.css">
+    <!--Site CSS-->
+    <link rel="stylesheet" href="~/css/style.css">
+    <!--Responsive CSS-->
+    <link rel="stylesheet" href="~/css/responsive.css">
+    <!--Custom CSS-->
+    <link rel="stylesheet" href="~/css/custom.css">
+
+    <style>
+        body, html {
+            height: 100%;
+            width: 100%;
+        }
+
+        .container {
+            /* The image used */
+            background: url('../images/l.jpg');
+            /* Full height */
+            height: 100%;
+            width: 200%;
+            /* Center and scale the image nicely */
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+            .container .col-md-4 {
+                position: absolute;
+                bottom: 0;
+                background: rgb(0, 0, 0); /* Fallback color */
+                background: rgba(0, 0, 0, 0.5); /* Black background with 0.5 opacity */
+                color: #f1f1f1;
+                width: 100%;
+                padding: 20px;
+                align-items: center;
+                position: relative;
+                left: 350px;
+                top: 2px;
+            }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h4 style="font-weight: bold; font-size: 30px; padding-left: 480px; top: 80px">Login</h4>
+        <div class="row">
+            <div class="col-md-4" style="top:90px">
+                <form asp-action="Login">
+                    <div asp-validation-summary="ModelOnly"></div>
+                    <div class="form-group" style="height:50px">
+                        <label asp-for="Email" class="control-label" style="color:yellow"></label>
+                        <input asp-for="Email" class="form-control" autocomplete="off" />
+                        <span asp-validation-for="Email"></span>
+                    </div>
+                    <div class="form-group" style="height:50px">
+                        <label asp-for="Password" class="control-label" style="color:yellow"></label>
+                        <input asp-for="Password" class="form-control" />
+                        <span asp-validation-for="Password"></span>
+                    </div>
+                    <div class="form-group form-check" style="height:50px">
+                        <label class="form-check-label" style="color:yellow">
+                            <input class="form-check-input" asp-for="RememberMe" /> @Html.DisplayNameFor(model => model.RememberMe)
+                        </label>
+                    </div>
+                    <div class="form-group" style="height: 50px;text-align:center">
+                        <input type="submit" value="Login" class="btn btn-primary" style="background-color: black;width:80px " />
+                        <p><a asp-action="ForgotPassword" asp-controller="Account" style="color:yellow">Forgot Password</a></p>
+                        <p><a asp-action="Dashboard" asp-controller="Dashboard" style="color:white">Back&nbsp;to&nbsp;Dashboard</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

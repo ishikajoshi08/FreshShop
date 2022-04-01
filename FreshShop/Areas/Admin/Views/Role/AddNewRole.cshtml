@@ -1,0 +1,50 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    ViewData["Title"] = "AddNewRole";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout1.cshtml";
+}
+
+<div class="container">
+    <br />
+    <h2 style="margin-left: 200px;color:black"><b>Add New Role</b></h2>
+    <form asp-action="AddNewRole" method="post" enctype="multipart/form-data" style="margin-left:200px;" id="role-form">
+        <div class="p-4 rounded border">
+            <div asp-validation-summary="ModelOnly" class="text-danger">
+
+            </div>
+            <h3>@ViewBag.msg</h3>
+            <div class="form-group row">
+                <div class="col-2">
+                    <label>Role Name</label>
+                </div>
+                <div class="col-5">
+                    <input id="name" name="name" value="@ViewBag.name" class="form-control" autocomplete="off" required="required">
+                </div>
+            </div>
+            <div class="form-group">
+                <button asp-action="AddNewRole" class="btn btn-primary" asp-controller="Role">Save</button>
+                <a asp-action="Index" class="btn btn-success">Back To List</a>
+            </div>
+
+        </div>
+    </form>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#role-form").validate({
+            rules: {
+                UserName: {
+                    required: true
+                },
+                PasswordHash: {
+                    required: true,
+                }
+            },
+            messages: {
+                UserName: "Please enter your Email",
+                PasswordHash: "Please enter your Password"
+            }
+        });
+</script>
+

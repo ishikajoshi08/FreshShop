@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -28,7 +29,11 @@ namespace FreshShop
         }
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<FreshShopContext>(option => option.UseSqlServer(_configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<FreshShopContext>(option =>
+            {
+                option.UseSqlServer(_configuration.GetConnectionString("DefaultConnection"));
+                option.EnableSensitiveDataLogging();
+            });
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<FreshShopContext>().AddDefaultTokenProviders();
@@ -48,12 +53,14 @@ namespace FreshShop
                 options.Lockout.MaxFailedAccessAttempts = 3;
             });
 
-            //services.AddSession(options =>
-            //{
-            //    options.IdleTimeout = TimeSpan.FromMinutes(20);
-            //    //options.Cookie.HttpOnly = true;
-            //    options.Cookie.IsEssential = true;
-            //});
+            services.AddDistributedMemoryCache();
+
+            services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromSeconds(20);
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+            });
             services.AddSession();
 
             services.Configure<DataProtectionTokenProviderOptions>(options =>
@@ -64,7 +71,16 @@ namespace FreshShop
             services.ConfigureApplicationCookie(config =>
             {
                 config.LoginPath = _configuration["Application:LoginPath"];
+                config.ExpireTimeSpan = TimeSpan.FromMinutes(60);
+                config.SlidingExpiration = true;
             });
+
+            //services.ConfigureApplicationCookie(options =>
+            //{
+            //    options.ExpireTimeSpan = TimeSpan.FromSeconds(10);
+            //    options.LoginPath = "/Account/Login";
+            //    options.SlidingExpiration = true;
+            //});
 
             services.AddControllersWithViews();
 
@@ -104,6 +120,7 @@ namespace FreshShop
             app.UseRouting();
             app.UseAuthentication();
             app.UseAuthorization();
+
             app.UseEndpoints(endpoints =>
             {
                 //endpoints.MapGet("/", async context =>
@@ -119,7 +136,7 @@ namespace FreshShop
 
                 endpoints.MapControllerRoute(
                 name: "MyArea",
-                pattern: "{area:exists}/{controller=Dashboard}/{action=Index}/{id?}"
+                pattern: "{area:exists}/{controller=Dashboard}/{action=Dashboard}/{id?}"
                 );
 
             });

@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 
 namespace FreshShop.Areas.Admin.Controllers
 {
+    [Authorize]
     [Area("admin")]
     public class AdminProductController : Controller
     {

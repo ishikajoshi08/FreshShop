@@ -1,0 +1,61 @@
+﻿@model FreshShop.Models.ApplicationUser
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout1.cshtml";
+}
+
+<div class="container">
+    <br />
+    <h2 style="margin-left: 200px;color:black"><b>User Details</b></h2>
+    <form asp-action="Details" method="post" enctype="multipart/form-data" style="margin-left:200px;" id="basic-form">
+        <div class="p-4 rounded border">
+            <div asp-validation-summary="ModelOnly" class="text-danger">
+
+            </div>
+            <input type="hidden" asp-for="Id" value="@Model.Id" />
+            <div class="form-group row">
+                <div class="col-2">
+                    <label asp-for="UserName">Email Id</label>
+                </div>
+                <div class="col-5">
+                    <input type="email" asp-for="UserName" class="form-control" autocomplete="off" readonly="readonly">
+                </div>
+                <span asp-validation-for="UserName" class="text-danger"></span>
+            </div>
+            <div class="form-group row">
+                <div class="col-2">
+                    <label asp-for="Name"></label>
+                </div>
+                <div class="col-5">
+                    <input asp-for="Name" class="form-control" autocomplete="off" readonly="readonly">
+                </div>
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group row">
+                <div class="col-2">
+                    <label asp-for="Address"></label>
+                </div>
+                <div class="col-5">
+                    <textarea asp-for="Address" class="form-control" autocomplete="off" readonly="readonly"></textarea>
+                </div>
+                <span asp-validation-for="Address" class="text-danger"></span>
+            </div>
+            <div class="form-group row">
+                <div class="col-2">
+                    <label asp-for="City"></label>
+                </div>
+                <div class="col-5">
+                    <input asp-for="City" class="form-control" autocomplete="off" readonly="readonly">
+                </div>
+                <span asp-validation-for="City" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary" asp-controller="AdminUser">Edit</a>
+                <a asp-action="Index" class="btn btn-success">Back To List</a>
+            </div>
+        </div>
+    </form>
+</div>
+

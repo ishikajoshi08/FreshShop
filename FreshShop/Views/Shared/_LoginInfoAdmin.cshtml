@@ -1,0 +1,107 @@
+﻿@using FreshShop.Models
+@using System.Net.Http
+@using FreshShop.Utility
+@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@inject Microsoft.AspNetCore.Identity.SignInManager<ApplicationUser> _signInManager
+
+@{ var userRole = HttpContextAccessor.HttpContext.Session.GetString(key: "roleName"); }
+
+@if (_signInManager.IsSignedIn(User))
+{
+    @if (userRole == "Admin")
+    {
+        <li class="nav-item dropdown">
+            @*<a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="~/images/IshikaJoshi_Photo.png" alt="" class="user-avatar-md rounded-circle"></a>*@
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:white">
+                <img src="~/images/IshikaJoshi_Photo.png" alt="" class="user-avatar-md rounded-circle">
+                Hello @(User.FindFirst("UserName").Value + "!")
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" asp-action="AdminProfile" asp-controller="Dashboard">My Profile</a>
+                <a class="dropdown-item" asp-action="Logout" asp-controller="Dashboard">Logout</a>
+            </div>
+        </li>
+
+        <li class="nav-left-sidebar" style="margin-left: -69em; margin-top: 8px; background-color: #89CFF0">
+            <div>
+                <div class="menu-list">
+                    <nav class="navbar navbar-expand-lg">
+                        <a class="d-xl-none d-lg-none" href="/admin/Dashboard/Index">Dashboard</a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarNav">
+                            <ul class="navbar-nav flex-column">
+                                <li class="nav-item navbar-light">
+                                    <a class="nav-link" asp-area="Admin" asp-controller="Dashboard" asp-action="Dashboard" style="color:black;font-size:20px;"><i class="fas fa-th-large" style="font-size:20px;"></i>Dashboard</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-2" aria-controls="submenu-2" style="color:black;font-size:20px;"><i class="fa fa-fw fa fa-shopping-bag" style="font-size:20px;"></i>Manage Products</a>
+                                    <div id="submenu-2" class="collapse submenu">
+                                        <ul class="nav flex-column">
+                                            <li class="nav-item navbar-light">
+                                                <a class="nav-link" asp-controller="Product" asp-action="AddNewProduct" style="color: white; font-size: 15px;">Add Product</a>
+                                            </li>
+                                            <li class="nav-item navbar-light">
+                                                <a class="nav-link" asp-controller="AdminProduct" asp-action="Index" asp-area="Admin" style="color: white; font-size: 15px;">View Product</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-3" aria-controls="submenu-3" style="color:black;font-size:20px;"><i class="fas fa-fw fa fa-users" style="font-size:20px;"></i>Manage Users</a>
+                                    <div id="submenu-3" class="collapse submenu">
+                                        <ul class="nav flex-column">
+                                            <li class="nav-item">
+                                                <a class="nav-link" asp-controller="AdminUser" asp-action="AddNewUser" asp-area="Admin" style="color: white; font-size: 15px;">Add User</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" asp-controller="AdminUser" asp-action="Index" asp-area="Admin" style="color: white; font-size: 15px;">View User</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-4" aria-controls="submenu-4" style="color:black;font-size:20px;"><i class="fas fa-fw fa fa-user" style="font-size:20px;"></i>Manage Roles</a>
+                                    <div id="submenu-4" class="collapse submenu">
+                                        <ul class="nav flex-column">
+                                            <li class="nav-item">
+                                                <a class="nav-link navbar-light" asp-controller="Role" asp-action="AddNewRole" asp-area="Admin" style="color: white; font-size: 15px;">Add Role</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link navbar-light" asp-controller="Role" asp-action="Index" asp-area="Admin" style="color:white;font-size:15px;">View Role</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link navbar-light" asp-controller="Role" asp-action="Assign" asp-area="Admin" style="color:white;font-size:15px;">Assign Role</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link navbar-light" asp-controller="Role" asp-action="AssignUserRole" asp-area="Admin" style="color:white;font-size:15px;">View Assign Role</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="nav-item ">
+                                    <a class="nav-link" asp-action="EditAdminProfile" asp-controller="Dashboard" style="color:black;font-size:20px;"><i class="fas fa-fw fa fa-pen-square" style="font-size:20px;"></i>Edit Profile</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-action="Logout" asp-controller="Dashboard" style="color:black;font-size:20px;"><i class="fas fa-fw fa fa-power-off" style="font-size:20px;"></i>Logout</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </li>
+    }
+
+}
+else
+{
+    <li class="nav-item pr-3 pl-3">
+        <a asp-controller="Dashboard" asp-action="Login" asp-route-returnUrl="@Context.Request.Path" class="btn btn-primary"><span class="glyphicon glyphicon-log-in"></span>Login</a>
+    </li>
+}
+
+

@@ -1,0 +1,68 @@
+﻿<!doctype html>
+<html lang="en">
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout1.cshtml";
+}
+<head>
+    <link rel="stylesheet" type="text/css" href="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/css/jquery.dataTables.css">
+</head>
+<body>
+    <br />
+    <br />
+    <div class="row" style="margin-left: 280px; width: 66rem;">
+        <div class="col-6">
+            <h2 style="color:black"><b>Roles</b></h2>
+        </div>
+        <div class="col-6 text-right">
+            <a asp-action="AddNewRole" class="btn btn-info" asp-controller="Role"><i class="fas fa-plus"></i>&nbsp; Add New Role</a>
+        </div>
+    </div>
+    <br />
+    <div style="margin-left:280px;">
+        <table class="table table-striped border" style="width:65rem;" id="myTable">
+            <thead>
+                <tr class="table-info">
+                    <th>
+                        <b style="color:black">Name</b>
+                    </th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                    @foreach (var item in ViewBag.Roles)
+                    {
+                        <tr>
+                            <td>@item.Name</td>
+                            <td>
+                                <div class="btn-group">
+                                    <a asp-action="Edit" asp-controller="Role" class="btn btn-primary" asp-route-id="@item.Id">
+                                        <i class="far fa-edit"></i>
+                                    </a>
+                                    <a asp-action="Delete" asp-controller="Role" class="btn btn-danger" asp-route-id="@item.Id">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
+@*<script src="//cdn.jsdelivr.net/npm/alertifyjs@1.11.2/build/alertify.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            var save = '@TempData["save"]'
+            if (save != '') {
+                alertify.success(save);
+            }
+        })
+    </script>*@
+
+
+
