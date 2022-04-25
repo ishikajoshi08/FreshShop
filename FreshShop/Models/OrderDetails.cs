@@ -10,16 +10,16 @@ namespace FreshShop.Models
 {
     public class OrderDetails
     {
-        public int OId { get; set; }
+        public int OrderDetailId { get; set; }
         [Display(Name="Order")]
         public int OrderId { get; set; }
         [Display(Name = "Product")]
         public int  Id{ get; set; }
-
+        public int Amount { get; set; }
+        public decimal Price { get; set; }
         [ForeignKey("OrderId")]
-        public Order Order { get; set; }
-
+        public virtual Order Order { get; set; }
         [ForeignKey("Id")]
-        public Products Products { get; set; }
+        public virtual Products Products { get; set; }
     }
 }

@@ -4,33 +4,39 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="container" align="center">
-    <table class="table table-bordered table-dark">
-        <thead>
-            <tr align="center">
-                <th scope="col">Name</th>
-                <th scope="col">Image</th>
-                <th scope="col">Price</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in ViewBag.cart)
-            {
-                <tr>
-
-                    <td align="center">@item.Products.ProductName</td>
-                    <td align="center"><img src="@item.Products.CoverImageUrl" style="width:15rem;height:15rem" class="img-rounded" /></td>
-                    <td align="center">@item.Products.Price</td>
-                    <td align="center">
-                        <a asp-controller="Cart" asp-action="RemoveWishlist" asp-route-id="@item.Products.Id" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
-                    </td>
+@if (ViewBag.wishlist != null)
+{
+    <div class="container" align="center">
+        <table class="table table-bordered table-dark">
+            <thead>
+                <tr align="center">
+                    <th scope="col">Name</th>
+                    <th scope="col">Image</th>
+                    <th scope="col">Price</th>
                 </tr>
-            }
-        </tbody>
+            </thead>
+            <tbody>
+                @foreach (var item in ViewBag.wishlist)
+                {
+                    <tr>
 
-    </table>
-    <br />
-    <br />
-    <a class="btn btn-success p-3 m-3" style="font-size:15px;" asp-controller="Product" asp-action="GetAllProducts">Back To Shopping</a>
-</div>
+                        <td align="center">@item.Products.ProductName</td>
+                        <td align="center"><img src="@item.Products.CoverImageUrl" style="width:15rem;height:15rem" class="img-rounded" /></td>
+                        <td align="center">@item.Products.Price</td>
+                        <td align="center">
+                            <a asp-controller="Cart" asp-action="RemoveWishlist" asp-route-id="@item.Products.Id" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
 
+        </table>
+        <br />
+        <br />
+        <a class="btn btn-success p-3 m-3" style="font-size:15px;" asp-controller="Product" asp-action="GetAllProducts">Back To Shopping</a>
+    </div>
+}
+else
+{
+    <h1>Nothing is availabe in your wishlist</h1>
+}

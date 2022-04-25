@@ -57,8 +57,7 @@
                 <label asp-for="CoverPhoto" class="control-label">Image</label>
             </div>
             <div class="col-5">
-                <input type="file" asp-for="@Model.CoverImageUrl" class="form-control img-thumbnail">
-                <img src="@Model.CoverImageUrl" />
+                <img src="@Model.CoverImageUrl" disabled />
             </div>
         </div>
         <div class="form-group row">

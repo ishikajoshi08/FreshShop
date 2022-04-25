@@ -22,17 +22,25 @@ namespace FreshShop.Controllers
         [Route("index")]
         public IActionResult Index()
         {
-            var cart = SessionExtensions.GetObjectFromJson<List<Item>>(HttpContext.Session, "cart");
-            ViewBag.cart = cart;
-            ViewBag.total = cart.Sum(i => i.Products.Price * i.Quantity);
+            try
+            {
+                var cart = SessionExtensions.GetObjectFromJson<List<Item>>(HttpContext.Session, "cart");
+                ViewBag.cart = cart;
+                ViewBag.total = cart.Sum(i => i.Products.Price * i.Quantity);
+            }
+            catch (Exception)
+            {
+                ViewBag.total = 0;
+                return View();
+            }
             return View();
         }
         [Authorize]
         [Route("wishlist")]
         public IActionResult Wishlist()
         {
-            var cart = SessionExtensions.GetObjectFromJson<List<Item>>(HttpContext.Session, "cart");
-            ViewBag.cart = cart;
+            var wishlist = SessionExtensions.GetObjectFromJson<List<Item>>(HttpContext.Session, "wishlist");
+            ViewBag.wishlist = wishlist;
             return View();
         }
 
@@ -45,6 +53,7 @@ namespace FreshShop.Controllers
                 var cart = new List<Item>();
                 cart.Add(new Item() { Products = _db.Products.Find(id), Quantity = 1 });
                 SessionExtensions.SetObjectAsJson(HttpContext.Session, "cart", cart);
+                TempData["TotalCount"] = cart.Count();
             }
             else
             {
@@ -60,57 +69,65 @@ namespace FreshShop.Controllers
                     cart[index].Quantity++;
                 }
                 SessionExtensions.SetObjectAsJson(HttpContext.Session, "cart", cart);
+                TempData["TotalCount"] = cart.Count();
             }
             return RedirectToAction("Index");
+        }
+
+        [Route("remove/{id}")]
+        public IActionResult Remove(int id)
+        {
+                var cart = SessionExtensions.GetObjectFromJson<List<Item>>(HttpContext.Session, "cart");
+                int index = Exists(cart, id);
+                cart.RemoveAt(index);
+                SessionExtensions.SetObjectAsJson(HttpContext.Session, "cart", cart);
+                TempData["TotalCount"] = cart.Count();
+                return RedirectToAction("Index");
+        }
+
+        public IActionResult Decrease(int id)
+        {
+            return View();
         }
 
         [Authorize]
         [Route("AddWishlist/{id}")]
         public IActionResult AddWishlist(int id)
         {
-            if (SessionExtensions.GetObjectFromJson<List<Item>>(HttpContext.Session, "cart") == null)
+            if (SessionExtensions.GetObjectFromJson<List<Item>>(HttpContext.Session, "wishlist") == null)
             {
-                var cart = new List<Item>();
-                cart.Add(new Item() { Products = _db.Products.Find(id), Quantity = 1 });
-                SessionExtensions.SetObjectAsJson(HttpContext.Session, "cart", cart);
+                var wishlist = new List<Item>();
+                wishlist.Add(new Item() { Products = _db.Products.Find(id), Quantity = 1 });
+                SessionExtensions.SetObjectAsJson(HttpContext.Session, "wishlist", wishlist);
+                TempData["TotalCountW"] = wishlist.Count();
             }
             else
             {
-                var cart = SessionExtensions.GetObjectFromJson<List<Item>>(HttpContext.Session, "cart");
-                int index = ExistsW(cart, id);
+                var wishlist = SessionExtensions.GetObjectFromJson<List<Item>>(HttpContext.Session, "wishlist");
+                int index = ExistsW(wishlist, id);
                 if (index == -1)
                 {
-                    cart.Add(new Item() { Products = _db.Products.Find(id), Quantity = 1 });
+                    wishlist.Add(new Item() { Products = _db.Products.Find(id), Quantity = 1 });
 
                 }
                 else
                 {
-                    cart[index].Quantity++;
+                    wishlist[index].Quantity++;
                 }
-                SessionExtensions.SetObjectAsJson(HttpContext.Session, "cart", cart);
+                SessionExtensions.SetObjectAsJson(HttpContext.Session, "wishlist", wishlist);
+                TempData["TotalCountW"] = wishlist.Count();
             }
             return RedirectToAction("Wishlist");
-        }
-
-        [Route("remove/{id}")]
-        public IActionResult Remove(int id)
-        {
-            
-                var cart = SessionExtensions.GetObjectFromJson<List<Item>>(HttpContext.Session, "cart");
-                int index = Exists(cart, id);
-                cart.RemoveAt(index);
-                SessionExtensions.SetObjectAsJson(HttpContext.Session, "cart", cart);
-                return RedirectToAction("Index");
         }
 
         [Route("RemoveWishlist/{id}")]
         public IActionResult RemoveWishlist(int id)
         {
-
-            var cart = SessionExtensions.GetObjectFromJson<List<Item>>(HttpContext.Session, "cart");
-            int index = ExistsW(cart, id);
-            cart.RemoveAt(index);
-            SessionExtensions.SetObjectAsJson(HttpContext.Session, "cart", cart);
+            var wishlist = SessionExtensions.GetObjectFromJson<List<Item>>(HttpContext.Session, "wishlist");
+            int index = ExistsW(wishlist, id);
+            wishlist.RemoveAt(index);
+            SessionExtensions.SetObjectAsJson(HttpContext.Session, "wishlist", wishlist);
+            TempData["TotalCountW"] = wishlist.Count();
             return RedirectToAction("Wishlist");
         }
 
@@ -126,11 +143,11 @@ namespace FreshShop.Controllers
             return -1;
         }
 
-        private int ExistsW(List<Item> cart, int id)
+        private int ExistsW(List<Item> wishlist, int id)
         {
-            for (int i = 0; i < cart.Count; i++)
+            for (int i = 0; i < wishlist.Count; i++)
             {
-                if (cart[i].Products.Id == id)
+                if (wishlist[i].Products.Id == id)
                 {
                     return i;
                 }

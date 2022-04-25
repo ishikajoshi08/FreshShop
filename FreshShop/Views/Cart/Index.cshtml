@@ -3,42 +3,49 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="container"  align="center">
-    <table class="table table-bordered table-dark">
-        <thead>
-            <tr align="center">
-                <th scope="col">Name</th>
-                <th scope="col">Image</th>
-                <th scope="col">Price</th>
-                <th scope="col">Quantity</th>
-                <th scope="col">Sub Total</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in ViewBag.cart)
-            {
-                <tr>
+@if (ViewBag.cart != null)
+{
 
-                    <td align="center">@item.Products.ProductName</td>
-                    <td align="center"><img src="@item.Products.CoverImageUrl" style="width:15rem;height:15rem" class="img-rounded" /></td>
-                    <td align="center">@item.Products.Price</td>
-                    <td align="center">@item.Quantity</td>
-                    <td align="center">@(item.Products.Price * item.Quantity)</td>
-                    <td align="center">
-                        <a asp-controller="Cart" asp-action="Remove" asp-route-id="@item.Products.Id" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
-                    </td>
+    <div class="container" align="center">
+        <table class="table table-bordered table-dark">
+            <thead>
+                <tr align="center">
+                    <th scope="col">Name</th>
+                    <th scope="col">Image</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Sub Total</th>
                 </tr>
-            }
-            <tr>
-                <td colspan="5" align="right">Total</td>
-                <td>@ViewBag.total</td>
-            </tr>
-        </tbody>
+            </thead>
+            <tbody>
+                @foreach (var item in ViewBag.cart)
+                {
+                    <tr>
 
-    </table>
-    <br />
-    <br />
-    <a class="btn btn-success p-3 m-3"  style="font-size:15px;" asp-controller="Product" asp-action="GetAllProducts">Back To Shopping</a>
-    <a class="btn btn-primary p-3 m-3"  style="font-size:15px;color:white" asp-controller="Order" asp-action="Checkout">Proceed To Checkout</a>
-</div>
+                        <td align="center">@item.Products.ProductName</td>
+                        <td align="center"><img src="@item.Products.CoverImageUrl" style="width:15rem;height:15rem" class="img-rounded" /></td>
+                        <td align="center">@item.Products.Price</td>
+                        <td align="center">@item.Quantity</td>
+                        <td align="center">@(item.Products.Price * item.Quantity)</td>
+                        <td align="center">
+                            <a asp-controller="Cart" asp-action="Remove" asp-route-id="@item.Products.Id" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
+                        </td>
+                    </tr>
+                }
+                <tr>
+                    <td colspan="5" align="right">Total</td>
+                    <td>@ViewBag.total</td>
+                </tr>
+            </tbody>
 
+        </table>
+        <br />
+        <br />
+        <a class="btn btn-success p-3 m-3" style="font-size:15px;" asp-controller="Product" asp-action="GetAllProducts">Back To Shopping</a>
+        <a class="btn btn-primary p-3 m-3" style="font-size:15px;color:white" asp-controller="Order" asp-action="Checkout">Proceed To Checkout</a>
+    </div>
+}
+else
+{
+    <h1>Nothing is availabe in your cart</h1>
+}

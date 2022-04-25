@@ -72,17 +72,18 @@
                         <input asp-for="Email" class="form-control" autocomplete="off"/>
                         <span asp-validation-for="Email"></span>
                     </div>
+                    
                     <div class="form-group" style="height:50px">
-                        <label asp-for="Password" class="control-label" style="color:yellow"></label>
+                        <label asp-for="Password" class="control-label mt-5" style="color:yellow"></label>
                         <input asp-for="Password" class="form-control" />
                         <span asp-validation-for="Password"></span>
                     </div>
                     <div class="form-group form-check" style="height:50px">
-                        <label class="form-check-label" style="color:yellow">
+                        <label class="form-check-label" style="color:yellow;margin-top:50px">
                             <input class="form-check-input" asp-for="RememberMe" /> @Html.DisplayNameFor(model => model.RememberMe)
                         </label>
                     </div>
-                    <div class="form-group" style="height: 50px;text-align:center">
+                    <div class="form-group" style="height: 50px; text-align: center; margin-top: 50px">
                         <input type="submit" value="Login" class="btn btn-primary" style="background-color: black;width:80px " />
                         <p><a asp-action="ForgotPassword" asp-controller="Account" style="color:yellow">Forgot Password</a></p>
                         <p>Click <a asp-action="Signup" asp-controller="Account" style="color:yellow">here</a> to Register Yourself</p>

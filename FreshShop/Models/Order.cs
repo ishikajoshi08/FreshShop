@@ -8,9 +8,7 @@ namespace FreshShop.Models
 {
     public class Order
     {
-        public int Id { get; set; }
-        [Display(Name = "Order No")]
-        public string OrderNo { get; set; }
+        public int OrderId { get; set; }
         [Required]
         [Display(Name = "Name")]
         public string Name { get; set; }
@@ -22,8 +20,8 @@ namespace FreshShop.Models
         public string Email { get; set; }
         [Required]
         public string Address { get; set; }
+        public decimal OrderTotal { get; set; }
         public DateTime OrderDate { get; set; }
-
         public virtual List<OrderDetails> OrderDetails { get; set; }
     }
 }

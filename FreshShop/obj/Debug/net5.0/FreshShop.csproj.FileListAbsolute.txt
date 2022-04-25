@@ -469,3 +469,4 @@ G:\FreshShop\FreshShop\FreshShop\obj\Debug\net5.0\Razor\Views\Shared\_LoginInfoA
 G:\FreshShop\FreshShop\FreshShop\obj\Debug\net5.0\Razor\Areas\Admin\Views\Dashboard\AdminProfile.cshtml.g.cs
 G:\FreshShop\FreshShop\FreshShop\obj\Debug\net5.0\Razor\Areas\Admin\Views\Dashboard\EditAdminProfile.cshtml.g.cs
 G:\FreshShop\FreshShop\FreshShop\obj\Debug\net5.0\Razor\Views\Cart\Wishlist.cshtml.g.cs
+G:\FreshShop\FreshShop\FreshShop\obj\Debug\net5.0\Razor\Views\Order\CheckoutComplete.cshtml.g.cs

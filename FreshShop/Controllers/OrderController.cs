@@ -7,15 +7,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using FreshShop.Utility;
+using FreshShop.Repository;
+using System.Net.Mail;
+using System.Net;
+using Microsoft.Extensions.Configuration;
 
 namespace FreshShop.Controllers
 {
     public class OrderController : Controller
     {
         private FreshShopContext _db;
-        public OrderController(FreshShopContext db)
+        private IConfiguration Configuration;
+
+        public OrderController(FreshShopContext db, IConfiguration _configuration)
         {
             _db = db;
+            Configuration = _configuration;
         }
 
         //Get Checkout
@@ -27,28 +34,37 @@ namespace FreshShop.Controllers
         //Post Checkout
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Checkout(Order anOrder)
+        public IActionResult Checkout(Order order)
         {
-            List<Products> products = HttpContext.Session.GetObjectFromJson<List<Products>>("products");
-            if(products! == null)
-            {
-                foreach(var product in products)
-                {
-                    OrderDetails orderDetails = new OrderDetails();
-                    orderDetails.Id = product.Id;
-                    anOrder.OrderDetails.Add(orderDetails);
-                }
-            }
-            _db.Orders.Add(anOrder);
-            await _db.SaveChangesAsync();
-            HttpContext.Session.Set("products",null);
             return View();
         }
 
-        public string GetOrderNo()
+        public IActionResult CheckoutComplete(Order model)
         {
-            int rowCount = _db.Orders.ToList().Count()+1;
-            return rowCount.ToString("000");
+            //Read SMTP settings from AppSettings.json.
+            string host = this.Configuration.GetValue<string>("Smtp:Server");
+            int port = this.Configuration.GetValue<int>("Smtp:Port");
+            string fromAddress = this.Configuration.GetValue<string>("Smtp:FromAddress");
+            string userName = this.Configuration.GetValue<string>("Smtp:UserName");
+            string password = this.Configuration.GetValue<string>("Smtp:Password");
+
+            using (MailMessage mm = new MailMessage(fromAddress, "18ishikajoshi@gmail.com"))
+            {
+                mm.Subject = "Order Placed";
+                mm.Body = "Name: " + model.Name + "<br /><br />Email: " + model.Email + "<br />" + model.Address + "<br />" + "Order Number: ADE23456GHHJTB" + "<br />" + "Thank you for placing the order :)";
+                mm.IsBodyHtml = true;
+
+                using (SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587))
+                {
+                    smtp.UseDefaultCredentials = false;
+                    NetworkCredential NetworkCred = new NetworkCredential(userName, password);
+                    smtp.Credentials = NetworkCred;
+                    smtp.EnableSsl = true;
+                    smtp.Send(mm);
+                    ViewBag.Message = "Email sent sucessfully.";
+                }
+            }
+            return RedirectToAction("GetAllProducts","Product");
         }
     }
 }

@@ -1,0 +1,12 @@
+﻿
+@{
+    ViewData["Title"] = "CheckoutComplete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>
+    @ViewBag.CheckoutCompleteMessage
+    <a asp-action="GetAllProducts" asp-controller="Product"class="btn btn-success">Back To List</a>
+</h1>
+
+

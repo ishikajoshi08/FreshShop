@@ -68,7 +68,7 @@ namespace FreshShop.Controllers
             string userName = this.configuration.GetValue<string>("Smtp:UserName");
             string password = this.configuration.GetValue<string>("Smtp:Password");
 
-            using (MailMessage mm = new MailMessage(fromAddress, "ishika08joshi@gmail.com"))
+            using (MailMessage mm = new MailMessage(fromAddress, "18ishikajoshi@gmail.com"))
             {
                 mm.Subject = "Testing";
                 mm.Body = "Name: " + model.Name + "<br /><br />Email: " + model.Email + "<br />" + model.Message;
